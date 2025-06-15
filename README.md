@@ -103,12 +103,16 @@ Hi, this is a simple guide for how you can setup Telekom's awesome multi-honeypo
 <br>
 
 ## Test Access
-- <b>Web Dashboard:</b> https://{Azure VM Public IP}:64297
+<b>Web Dashboard:</b> https://{Azure VM Public IP}:64297
+
+![tpot-dash](images/tpot-dash.png)
+
+#### Kibana
 
 ![kibana](images/kibana-dash.png)
 
   
-- <b>SSH:</b> ssh {username}@{Azure VM Public IP} -p 64295
+<b>SSH:</b> ssh {username}@{Azure VM Public IP} -p 64295
 
 <br>
 
