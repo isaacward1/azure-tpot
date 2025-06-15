@@ -12,7 +12,7 @@ Hi, this is a simple guide for how you can setup Telekom's awesome multi-honeypo
 
 ## Installing [T-Pot](https://github.com/telekom-security/tpotce)
 
-1. Create temporary SSH firewall rule ( VM > Side Panel > Networking > Settings > (+) Create Port Rule > Inbound )
+1. Create temporary SSH firewall rule (VM > Side Panel > Networking > Settings > (+) Create Port Rule > Inbound)
 
 ![nsg1](images/nsg1.png)
 
@@ -20,13 +20,20 @@ Hi, this is a simple guide for how you can setup Telekom's awesome multi-honeypo
 
 3. SSH into the VM
 4. Follow the [quick installation steps](https://github.com/telekom-security/tpotce#tldr) listed on the official repo
+
+![install1](images/install1.png)
+
 - <b>Side note:</b> If unattended-upgrades.service is running (check with `sudo systemctl status unattended-upgrades.service`), you may need to stop it temporarily to avoid 'dpkg frontend lock' errors: `sudo systemctl stop unattended-upgrades.service`
 
 <br>
 
 #### During install:
-- Install type: 'h'
-- Make sure to have a strong web user password (e.g. 30+ char alhpa-numeric) as the web UI will be internet-facing!
+- T-Pot install type: 'h'
+
+![install2](images/install2.png)
+
+- Document your chosen web username/password. You will need this to login to the T-Pot Web Dashboard.
+- Even though Azure NSG rules restrict access, make sure to have a strong web user password (e.g. 30+ char alhpa-numeric).
 
 <br>
 
@@ -50,6 +57,8 @@ Hi, this is a simple guide for how you can setup Telekom's awesome multi-honeypo
 ## Create NSG Firewall Rules
 
 #### Inbound:
+![mgmt-nsg](images/mgmt-nsg.png)
+
     Source: My IP address
     Source IP addresses/CIDR ranges: {your public IP}
     Source port ranges: *
@@ -61,7 +70,9 @@ Hi, this is a simple guide for how you can setup Telekom's awesome multi-honeypo
     Priority: 100
     Name: Allow-TpotMgmt-Inbound
     Description: Allow SSH and Web Dashboard access from My IP.
-    
+
+![honeypot-nsg](images/honeypot-nsg.png)
+
     Source: My IP address
     Source IP addresses/CIDR ranges: {your public IP}
     Source port ranges: *
@@ -75,6 +86,9 @@ Hi, this is a simple guide for how you can setup Telekom's awesome multi-honeypo
     Description: Expose honeypot ports to the internet.
 
 #### Outbound:
+
+![outbound-nsg](images/nsg-outbound.png)
+
     Source: Any
     Source port ranges: *
     Destination: Any
@@ -90,6 +104,10 @@ Hi, this is a simple guide for how you can setup Telekom's awesome multi-honeypo
 
 ## Test Access
 - <b>Web Dashboard:</b> https://{Azure VM Public IP}:64297
+
+![kibana](images/kibana-dash.png)
+
+  
 - <b>SSH:</b> ssh {username}@{Azure VM Public IP} -p 64295
 
 <br>
