@@ -4,9 +4,40 @@ A simple guide for how you can setup Telekom's awesome multi-honeypot [T-Pot](ht
 
 ## Azure VM Deployment
 
-1. Create a Ubuntu 24.04 or Debian 12 VM (Ubuntu was less probelmatic, Debian is slimmer and slightly more responsive)
+Create a resource > select `Ubuntu Server 24.04 LTS` or `Debian 12 "Bookworm"`
+- note: Ubuntu was less probelmatic, Debian is slimmer and was slightly more responsive
+
+![create-vm1](images/create-vm1.png)
+
+![create-vm2](images/create-vm2.png)
+
+#### Basics
+
+    Virtual Machine Name:    tpot
+    Region:                  East US 2
+    Availibility Zone:       1
+    Image:                   Debian 12 "Bookworm" - Gen2
+    VM architecture:         x64
+    Size:                    Standard B4ms (4 vcpus, 16 GiB memory)
+    Authentication type:     SSH puclic key
+    Public inbound ports:    none
 
 ![Basics](images/basics.png)
+
+#### Disks
+
+    OS Disk size:      128 GiB
+    OS Disk type:      Standard SSD LRS
+    Delete with VM:    Enabled
+
+#### Networking
+
+    Virtual network: (new) tpot-vnet
+    Subnet: (new) default
+    Delete with VM:    Enabled
+  
+
+- Ensure that 
 
 ![Disks, Networking](images/disks-networkings.png)
 
