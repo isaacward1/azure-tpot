@@ -122,8 +122,13 @@ A simple guide for how you can setup Telekom's awesome multi-honeypot [T-Pot](ht
 
 <br>
 
-## Configuring
+#### Spiderfoot Threat Intelligence
+😴😴😴
 
+<br>
+
+## Configuring Elasticsearch/Logstash (optional)
+😴😴😴
 
 <br>
 
@@ -142,7 +147,7 @@ A simple guide for how you can setup Telekom's awesome multi-honeypot [T-Pot](ht
 
 <br>
 
-- To check for port conflicts on specified port: <br> `sudo fuser {port}/tcp(udp)` to get the PID(s) of processes using this port, then `ps -p {PID}` to find the culprit
+- To determine processes reponsible for port conflicts on a specified port: <br> `sudo fuser {port}/tcp(udp)` to get the PID(s) of processes using this port, then `ps -p {PID}`
 
 <br>
 
