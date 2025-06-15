@@ -13,13 +13,18 @@ Hi, this is a simple guide for how you can setup Telekom's awesome multi-honeypo
 ## Installing [T-Pot](https://github.com/telekom-security/tpotce)
 
 1. Create temporary SSH firewall rule ( VM > Side Panel > Networking > Settings > (+) Create Port Rule > Inbound )
-![Basics](images/nsg1.png)
 
-![Basics](ssh-rule/nsg1.png)
+![nsg1](images/nsg1.png)
+
+![ssh-rule](images/ssh-rule.png)
 
 3. SSH into VM
-4. Follow the [quick installation steps](https://github.com/telekom-security/tpotce#tldr) listed on the official repo: 
+4. Follow the [quick installation steps](https://github.com/telekom-security/tpotce#tldr) listed on the official repo
+- Side note: If unattended-upgrades.service is running, you may need to stop it temporarily to avoid 'dpkg frontend lock' errors:
 
+<br>
+
+    sudo systemctl stop unattended-upgrades.service
 
 <br>
 
@@ -34,7 +39,6 @@ Hi, this is a simple guide for how you can setup Telekom's awesome multi-honeypo
     $ nano /etc/ssh/sshd_config
     change: PasswordAuthentication no
     
-    $ sudo apt update && sudo apt upgrade -y	
     $ sudo apt install unattended-upgrades
     $ sudo systemctl enable --now unattended-upgrades.service
     
