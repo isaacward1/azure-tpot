@@ -19,7 +19,7 @@ Create a resource > select `Ubuntu Server 24.04 LTS` or `Debian 12 "Bookworm"`
     Image:                   Debian 12 "Bookworm" - Gen2
     VM architecture:         x64
     Size:                    Standard B4ms (4 vcpus, 16 GiB memory)
-    Authentication type:     SSH puclic key
+    Authentication type:     SSH public key
     Public inbound ports:    none
 
 ![Basics](images/basics.png)
