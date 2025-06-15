@@ -189,7 +189,7 @@ Create a resource > select `Ubuntu Server 24.04 LTS` or `Debian 12 "Bookworm"`
 
 <br>
 
-- You may need to manually configure DNS/nameservers in case of port 53 conflict 
+- You may need to manually set DNS/nameservers in case of port 53 conflict 
         
         $ sudo systemctl disable --now systemd-resolved.service
   
