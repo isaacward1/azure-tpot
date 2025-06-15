@@ -18,13 +18,9 @@ Hi, this is a simple guide for how you can setup Telekom's awesome multi-honeypo
 
 ![ssh-rule](images/ssh-rule.png)
 
-3. SSH into VM
+3. SSH into the VM
 4. Follow the [quick installation steps](https://github.com/telekom-security/tpotce#tldr) listed on the official repo
-- Side note: If unattended-upgrades.service is running, you may need to stop it temporarily to avoid 'dpkg frontend lock' errors:
-
-<br>
-
-    sudo systemctl stop unattended-upgrades.service
+- <b>Side note:</b> If unattended-upgrades.service is running (check with `sudo systemctl status unattended-upgrades.service`), you may need to stop it temporarily to avoid 'dpkg frontend lock' errors: `sudo systemctl stop unattended-upgrades.service`
 
 <br>
 
@@ -37,16 +33,16 @@ Hi, this is a simple guide for how you can setup Telekom's awesome multi-honeypo
 ## System Tweaks
 
     $ nano /etc/ssh/sshd_config
-    change: PasswordAuthentication no
-    
+    - change: PasswordAuthentication {} --> PasswordAuthentication no
+
     $ sudo apt install unattended-upgrades
     $ sudo systemctl enable --now unattended-upgrades.service
     
     $ sudo crontab -e
     # cleanup
     0 2 * * 0 apt autoremove --purge && apt autoclean -y
-
-    $ sudo systemctl disable --now exim4-base.timer exim4-base.service exim4.service systemd-resolved
+    
+    $ sudo systemctl disable --now exim4-base.timer exim4-base.service exim4.service
     $ sudo apt purge exim4*    # wow this thing is annoying
 
 <br>
@@ -90,20 +86,32 @@ Hi, this is a simple guide for how you can setup Telekom's awesome multi-honeypo
     Name: Allow-TpotMgmt-Outbound
     Description: Allow outbound management traffic.
 
-
-
-
-
 <br>
 
 ## Test Access
 - <b>Web Dashboard:</b> https://{Azure VM Public IP}:64297
 - <b>SSH:</b> ssh {username}@{Azure VM Public IP} -p 64295
 
+<br>
 
+## Troubleshooting
+#### If you choose to install T-Pot on a Debian 12 Azure VM, there are a few issues you may run into. Below are steps for troubleshooting:
 
-## Annoying Issues I Ran Into
+- To check fot TPot-related errors: <br> `journalctl -u tpot -f`
 
-#### remove this hemorrhoid:
+<br>
 
-    sudo apt purge exim4*
+- To check the status/errors of tpot.service: <br> `sudo systemctl status tpot.service`
+
+<br>
+
+- To check for port bind conflicts that will force-restart tpot.service: <br> `sudo netstat -tulpen` or `sudo ss -tunlap`
+
+<br>
+
+- You may need to manually configure DNS/nameservers in case of port 53 conflict between 
+    
+        $ nano /etc/resolve.conf
+        127.0.0.1 {results of hostname}
+        nameserver 8.8.8.8
+        nameserver 8.8.4.4
