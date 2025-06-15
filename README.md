@@ -1,4 +1,4 @@
-Hi, this is a simple guide for how you can setup Telekom's awesome multi-honeypot T-Pot on Azure!
+A simple guide for how you can setup Telekom's awesome multi-honeypot [T-Pot](https://github.com/telekom-security/tpotce) on Azure.
 
 <br>
 
@@ -10,7 +10,7 @@ Hi, this is a simple guide for how you can setup Telekom's awesome multi-honeypo
 
 <br>
 
-## Installing [T-Pot](https://github.com/telekom-security/tpotce)
+## Installing T-Pot
 
 1. Create temporary SSH firewall rule (VM > Side Panel > Networking > Settings > (+) Create Port Rule > Inbound)
 
@@ -40,7 +40,7 @@ Hi, this is a simple guide for how you can setup Telekom's awesome multi-honeypo
 ## System Tweaks
 
     $ nano /etc/ssh/sshd_config
-    - change: PasswordAuthentication {} --> PasswordAuthentication no
+    change: PasswordAuthentication {} --> PasswordAuthentication no
 
     $ sudo apt install unattended-upgrades
     $ sudo systemctl enable --now unattended-upgrades.service
@@ -48,13 +48,16 @@ Hi, this is a simple guide for how you can setup Telekom's awesome multi-honeypo
     $ sudo crontab -e
     # cleanup
     0 2 * * 0 apt autoremove --purge && apt autoclean -y
-    
+
+    (if your VM has exim4 installed, it will compete with some of the honeypots for port 25)
     $ sudo systemctl disable --now exim4-base.timer exim4-base.service exim4.service
-    $ sudo apt purge exim4*    # wow this thing is annoying
+    $ sudo apt purge exim4*
 
 <br>
 
-## Create NSG Firewall Rules
+## NSG Firewall Rules
+
+- Delete the temporary SSH rule created for initial access
 
 #### Inbound:
 ![mgmt-nsg](images/mgmt-nsg.png)
@@ -103,6 +106,8 @@ Hi, this is a simple guide for how you can setup Telekom's awesome multi-honeypo
 <br>
 
 ## Test Access
+<b>SSH:</b> ssh {username}@{Azure VM Public IP} -p 64295
+
 <b>Web Dashboard:</b> https://{Azure VM Public IP}:64297
 
 ![tpot-dash](images/tpot-dash.png)
@@ -111,8 +116,14 @@ Hi, this is a simple guide for how you can setup Telekom's awesome multi-honeypo
 
 ![kibana](images/kibana-dash.png)
 
-  
-<b>SSH:</b> ssh {username}@{Azure VM Public IP} -p 64295
+#### Attack Map
+
+![attack-map](images/attack-map.png)
+
+<br>
+
+## Configuring
+
 
 <br>
 
@@ -131,9 +142,18 @@ Hi, this is a simple guide for how you can setup Telekom's awesome multi-honeypo
 
 <br>
 
-- You may need to manually configure DNS/nameservers in case of port 53 conflict between 
-    
-        $ nano /etc/resolve.conf
-        127.0.0.1 {results of hostname}
+- To check for port conflicts on specified port: <br> `sudo fuser {port}/tcp(udp)` to get the PID(s) of processes using this port, then `ps -p {PID}` to find the culprit
+
+<br>
+
+- You may need to manually configure DNS/nameservers in case of port 53 conflict 
+        
+        $ sudo systemctl disable --now systemd-resolved.service
+  
+        $ sudo nano /etc/resolve.conf
+  
+        127.0.0.1 {hostname}
         nameserver 8.8.8.8
         nameserver 8.8.4.4
+
+  <br>
