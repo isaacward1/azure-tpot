@@ -5,7 +5,7 @@ A simple guide for how you can setup Telekom's awesome multi-honeypot [T-Pot](ht
 ## Azure VM Deployment
 
 Create a resource > select `Ubuntu Server 24.04 LTS` or `Debian 12 "Bookworm"`
-- note: Ubuntu was less probelmatic, Debian is slimmer and was slightly more responsive
+- <b>note:</b> Ubuntu was less probelmatic, Debian is slimmer and was slightly more responsive
 
 ![create-vm1](images/create-vm1.png)
 
@@ -24,22 +24,27 @@ Create a resource > select `Ubuntu Server 24.04 LTS` or `Debian 12 "Bookworm"`
 
 ![Basics](images/basics.png)
 
+
 #### Disks
 
     OS Disk size:      128 GiB
     OS Disk type:      Standard SSD LRS
     Delete with VM:    Enabled
 
+![Basics](images/disks.png)
+
+
 #### Networking
 
-    Virtual network: (new) tpot-vnet
-    Subnet: (new) default
-    Delete with VM:    Enabled
-  
+    Virtual network:            tpot-vnet
+    Subnet: default             (10.0.0.0/24)
+    Public IP:                  tpot-ip
+    Accelerated networking:     On
+    Delete with VM:             Enabled
 
-- Ensure that 
+![Basics](images/networking.png)
 
-![Disks, Networking](images/disks-networkings.png)
+- <b>note:</b> T-Pot expects your virtual network subnet to be a /24 (255.255.255.0) 
 
 <br>
 
@@ -56,7 +61,7 @@ Create a resource > select `Ubuntu Server 24.04 LTS` or `Debian 12 "Bookworm"`
 
 ![install1](images/install1.png)
 
-- <b>Side note:</b> If unattended-upgrades.service is running (check with `sudo systemctl status unattended-upgrades.service`), you may need to stop it temporarily to avoid 'dpkg frontend lock' errors: `sudo systemctl stop unattended-upgrades.service`
+- <b>note:</b> If unattended-upgrades.service is running (check with `sudo systemctl status unattended-upgrades.service`), you may need to stop it temporarily to avoid 'dpkg frontend lock' errors: `sudo systemctl stop unattended-upgrades.service`
 
 <br>
 
