@@ -12,9 +12,13 @@ Hi, this is a simple guide for how you can setup Telekom's awesome multi-honeypo
 
 ## Installing [T-Pot](https://github.com/telekom-security/tpotce)
 
-1. Create temporary SSH firewall rule
-2. SSH into VM
-3. Follow the [quick installation steps](https://github.com/telekom-security/tpotce#tldr) listed on the official repo: 
+1. Create temporary SSH firewall rule ( VM > Side Panel > Networking > Settings > (+) Create Port Rule > Inbound )
+![Basics](images/nsg1.png)
+
+![Basics](ssh-rule/nsg1.png)
+
+3. SSH into VM
+4. Follow the [quick installation steps](https://github.com/telekom-security/tpotce#tldr) listed on the official repo: 
 
 
 <br>
