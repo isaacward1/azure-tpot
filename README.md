@@ -45,6 +45,9 @@ Hi, this is a simple guide for how you can setup Telekom's awesome multi-honeypo
     $ sudo crontab -e
     0 2 * * * apt autoremove --purge && apt autoclean -y
 
+    $ sudo systemctl disable --now exim4-base.timer exim4-base.service exim4.service systemd-resolved
+    $ sudo apt purge exim4*    # wow this thing is annoying
+
 <br>
 
 ## Create NSG Firewall Rules
@@ -95,3 +98,11 @@ Hi, this is a simple guide for how you can setup Telekom's awesome multi-honeypo
 ## Test Access
 - <b>Web Dashboard:</b> https://{Azure VM Public IP}:64297
 - <b>SSH:</b> ssh {username}@{Azure VM Public IP} -p 64295
+
+
+
+## Annoying Issues I Ran Into
+
+#### remove this hemorrhoid:
+
+    sudo apt purge exim4*
