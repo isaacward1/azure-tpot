@@ -43,7 +43,8 @@ Hi, this is a simple guide for how you can setup Telekom's awesome multi-honeypo
     $ sudo systemctl enable --now unattended-upgrades.service
     
     $ sudo crontab -e
-    0 2 * * * apt autoremove --purge && apt autoclean -y
+    # cleanup
+    0 2 * * 0 apt autoremove --purge && apt autoclean -y
 
     $ sudo systemctl disable --now exim4-base.timer exim4-base.service exim4.service systemd-resolved
     $ sudo apt purge exim4*    # wow this thing is annoying
