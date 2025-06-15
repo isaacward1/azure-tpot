@@ -44,7 +44,7 @@ Create a resource > select `Ubuntu Server 24.04 LTS` or `Debian 12 "Bookworm"`
 
 ![Basics](images/networking.png)
 
-- <b>note:</b> T-Pot expects your virtual network subnet to be a /24 (255.255.255.0) 
+- <b>note:</b> T-Pot expects your virtual network subnet (internal) to be a /24 (255.255.255.0) 
 
 <br>
 
