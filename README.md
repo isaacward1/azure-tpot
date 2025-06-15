@@ -34,7 +34,7 @@ Hi, this is a simple guide for how you can setup Telekom's awesome multi-honeypo
 
 <br>
 
-## Bit of System Config
+## System Tweaks
 
     $ nano /etc/ssh/sshd_config
     change: PasswordAuthentication no
