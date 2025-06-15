@@ -4,6 +4,8 @@ A simple guide for how you can setup Telekom's awesome multi-honeypot [T-Pot](ht
 
 ## Azure VM Deployment
 
+1. Create a Ubuntu 24.04 or Debian 12 VM (Ubuntu was less probelmatic, Debian is slimmer and slightly more responsive)
+
 ![Basics](images/basics.png)
 
 ![Disks, Networking](images/disks-networkings.png)
