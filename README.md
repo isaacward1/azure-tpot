@@ -162,7 +162,6 @@ Create a resource > select `Ubuntu Server 24.04 LTS` or `Debian 12 "Bookworm"`
 
 ![attack-map](images/attack-map.png)
 
-<br>
 
 #### Spiderfoot Threat Intelligence
 
