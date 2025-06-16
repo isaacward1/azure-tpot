@@ -5,7 +5,7 @@ A simple guide for setting up Telekom's awesome multi-honeypot [T-Pot](https://g
 ## Azure VM Deployment
 
 Create a resource > select `Ubuntu Server 24.04 LTS` or `Debian 12 "Bookworm"`
-- <b>note:</b> Ubuntu was less probelmatic, Debian is slimmer and was slightly more responsive
+- <b>Note:</b> Ubuntu was less probelmatic, Debian is slimmer and was slightly more responsive
 
 ![create-vm1](images/create-vm1.png)
 
@@ -21,6 +21,8 @@ Create a resource > select `Ubuntu Server 24.04 LTS` or `Debian 12 "Bookworm"`
     Size:                    Standard B4ms (4 vcpus, 16 GiB memory)
     Authentication type:     SSH public key
     Public inbound ports:    none
+
+- <b>Note:</b> You could allow access via 22 from this setup, but this port will be exposed to ALL external IPs. For this reason, I suggest setting 'Public inbound ports' to None and then creating a more restricted, temporary NSG rule after the deploying the VM (see [Install Step #1](#installing-t-pot)).
 
 ![Basics](images/basics.png)
 
@@ -44,7 +46,7 @@ Create a resource > select `Ubuntu Server 24.04 LTS` or `Debian 12 "Bookworm"`
 
 ![Basics](images/networking.png)
 
-- <b>note:</b> T-Pot expects your virtual network subnet (internal) to be a /24 (255.255.255.0) 
+- <b>Note:</b> T-Pot expects your virtual network subnet (internal) to be a /24 (255.255.255.0) 
 
 <br>
 
@@ -61,7 +63,7 @@ Create a resource > select `Ubuntu Server 24.04 LTS` or `Debian 12 "Bookworm"`
 
 ![install1](images/install1.png)
 
-- <b>note:</b> If unattended-upgrades.service is running (check with `sudo systemctl status unattended-upgrades.service`), you may need to stop it temporarily to avoid 'dpkg frontend lock' errors: `sudo systemctl stop unattended-upgrades.service`
+- <b>Note:</b> If unattended-upgrades.service is running (check with `sudo systemctl status unattended-upgrades.service`), you may need to stop it temporarily to avoid 'dpkg frontend lock' errors: `sudo systemctl stop unattended-upgrades.service`
 
 <br>
 
