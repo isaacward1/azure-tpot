@@ -22,7 +22,7 @@ Create a resource > select `Ubuntu Server 24.04 LTS` or `Debian 12 "Bookworm"`
     Authentication type:     SSH public key
     Public inbound ports:    none
 
-- <b>Note:</b> You could allow access via 22 from this setup, but this port will be exposed to ALL external IPs. For this reason, I suggest setting 'Public inbound ports' to None and then creating a more restricted, temporary NSG rule after the deploying the VM (see [Install Step #1](#installing-t-pot)).
+- <b>Note:</b> You could allow access via 22 from this setup, but this port will be exposed to ALL external IPs. For this reason, I suggest setting 'Public inbound ports' to None and then creating a more restricted, temporary NSG rule after the deploying the VM (see [Install step #1](#installing-t-pot)).
 
 ![Basics](images/basics.png)
 
