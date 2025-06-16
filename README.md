@@ -152,6 +152,7 @@ Create a resource > select `Ubuntu Server 24.04 LTS` or `Debian 12 "Bookworm"`
 
 #### Kibana
 
+![kibana-dash](images/kibana-dash.png)
 
 #### Attack Map
 
