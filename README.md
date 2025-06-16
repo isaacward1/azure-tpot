@@ -1,4 +1,4 @@
-A simple guide for how you can setup Telekom's awesome multi-honeypot [T-Pot](https://github.com/telekom-security/tpotce) on Azure.
+A simple guide for setting up Telekom's awesome multi-honeypot [T-Pot](https://github.com/telekom-security/tpotce) on Azure.
 
 <br>
 
