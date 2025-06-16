@@ -152,7 +152,6 @@ Create a resource > select `Ubuntu Server 24.04 LTS` or `Debian 12 "Bookworm"`
 
 #### Kibana
 
-![kibana](images/kibana-dash.png)
 
 #### Attack Map
 
@@ -161,7 +160,10 @@ Create a resource > select `Ubuntu Server 24.04 LTS` or `Debian 12 "Bookworm"`
 <br>
 
 ## Spiderfoot Threat Intelligence
-😴😴😴
+
+![spiderfoot1](images/spiderfoot1.png)
+
+![spiderfoot2](images/spiderfoot2.png)
 
 <br>
 
